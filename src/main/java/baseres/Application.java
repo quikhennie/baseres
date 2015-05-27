@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 
+/*
+ * Next building relational database from JPA
+ */
 
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {

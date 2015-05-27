@@ -1,28 +1,47 @@
 package baseres.products;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import baseres.products.brand.Brand;
 
 @Entity
 public class Product {
 	
+	public Product() {
+		
+	}
+	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
-	
+	@Column(unique=true, nullable=false)
 	String barcode;
-	String brandName;
-	String vendorCode;
+	@Column(nullable=false)
 	double size;
+	@Column(nullable=false)
 	double packSize;
+	@Column(nullable=false)
 	double costPrice;
 	String supplierProductCode;
+	@Column(nullable=false)
 	String description;
 	
-	public Product() {
-		
+	@ManyToOne
+	@JoinColumn(name="brand_id")
+	private Brand brand;
+	
+	public Brand getBrand() {
+		return brand;
+	}
+
+	public void setBrand(Brand brand) {
+		this.brand = brand;
 	}
 	
 	public Product(String barcode) {
@@ -43,22 +62,6 @@ public class Product {
 
 	public void setBarcode(String barcode) {
 		this.barcode = barcode;
-	}
-
-	public String getBrandName() {
-		return brandName;
-	}
-
-	public void setBrandName(String brandName) {
-		this.brandName = brandName;
-	}
-
-	public String getVendorCode() {
-		return vendorCode;
-	}
-
-	public void setVendorCode(String vendorCode) {
-		this.vendorCode = vendorCode;
 	}
 
 	public double getSize() {
@@ -95,11 +98,11 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", barcode=" + barcode + ", brandName="
-				+ brandName + ", vendorCode=" + vendorCode + ", size=" + size
-				+ ", packSize=" + packSize + ", costPrice=" + costPrice
-				+ ", supplierProductCode=" + supplierProductCode
-				+ ", description=" + description + "]";
+		return "Product [product_id=" + id + ", barcode=" + barcode
+				+ ", size=" + size + ", packSize=" + packSize + ", costPrice="
+				+ costPrice + ", supplierProductCode=" + supplierProductCode
+				+ ", description=" + description + ", brand=" + brand + "]";
 	}
-
+	
+	
 }

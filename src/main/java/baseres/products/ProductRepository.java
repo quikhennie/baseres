@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ProductRepository extends CrudRepository<Product, Long> {
 	
-	List<Product> findByBarcode(String barcode);
+	Product findByBarcode(String barcode);
+	List<Product> findAll();
 
 }

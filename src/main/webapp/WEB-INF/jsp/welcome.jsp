@@ -1,18 +1,21 @@
-<!DOCTYPE html>
-
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<html lang="en">
+<jsp:include page="./components/header.jsp" />
 
 <body>
-	<c:url value="/resources/text.txt" var="url"/>
-	<spring:url value="/resources/text.txt" htmlEscape="true" var="springUrl" />
+	<h1>Test Site</h1>
 	Spring URL: ${springUrl} at ${time}
 	<br>
 	JSTL URL: ${url}
 	<br>
 	Message: ${message}
+	<br />
+	Test Input<input type="text" id="txt" value="" />
+	
+	
+	<div class="container">
+  		<h1>My First Bootstrap Page</h1>
+  	<p>This is some text.</p> 
+</div>
 </body>
 
-</html>
+
+<jsp:include page="./components/footer.jsp" />
